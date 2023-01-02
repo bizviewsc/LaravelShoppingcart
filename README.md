@@ -739,7 +739,7 @@ Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']);
         <a href="https://github.com/hmteixeira">
             <img src="https://avatars.githubusercontent.com/u/52238549?v=4" width="100;" alt="hmteixeira"/>
             <br />
-            <sub><b>hmteixeira</b></sub>
+            <sub><b>Hmteixeira</b></sub>
         </a>
     </td>
     <td align="center">
