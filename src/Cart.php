@@ -627,7 +627,7 @@ class Cart
      *
      * @param mixed $identifier
      *
-     * @return void
+     * @return string
      */
     public function store($identifier)
     {
@@ -639,24 +639,27 @@ class Cart
 
         $instance = $this->currentInstance();
 
-        if ($this->storedCartInstanceWithIdentifierExists($instance, $identifier)) {
-            throw new CartAlreadyStoredException("A cart with identifier {$identifier} was already stored.");
-        }
-
         if ($this->getConnection()->getDriverName() === 'pgsql') {
             $serializedContent = base64_encode(serialize($content));
         } else {
             $serializedContent = serialize($content);
         }
 
-        $this->getConnection()->table($this->getTableName())->insert([
-            'identifier' => $identifier,
-            'instance'   => $instance,
-            'content'    => $serializedContent,
-            'created_at' => $this->createdAt ?: Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        $rows = $this->getConnection()->select('SELECT * FROM '.$this->getTableName().' WHERE identifier = "'.$identifier.'" AND instance = "'.$instance.'"');
 
+        if(count($rows) > 0){
+            $this->getConnection()->table($this->getTableName())->where('identifier' , $identifier)->where('instance' , $instance)->update(['content' => $serializedContent, 'updated_at'=>Carbon::now()]);
+
+        }else{
+            $this->getConnection()->table($this->getTableName())->insert([
+                'identifier' => $identifier,
+                'instance'   => $instance,
+                'content'    => $serializedContent,
+                'created_at' => $this->createdAt ?: Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+        
         $this->events->dispatch('cart.stored');
     }
 
