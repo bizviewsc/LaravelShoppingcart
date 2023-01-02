@@ -736,17 +736,17 @@ Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']);
 <table>
 <tr>
     <td align="center">
-        <a href="https://github.com/bumbummen99">
-            <img src="https://avatars.githubusercontent.com/u/4533331?v=4" width="100;" alt="bumbummen99"/>
+        <a href="https://github.com/hmteixeira">
+            <img src="https://avatars.githubusercontent.com/u/52238549?v=4" width="100;" alt="hmteixeira"/>
             <br />
-            <sub><b>Patrick</b></sub>
+            <sub><b>hmteixeira</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/Sartoric">
-            <img src="https://avatars.githubusercontent.com/u/6607379?v=4" width="100;" alt="Sartoric"/>
+        <a href="https://github.com/Majin-PT">
+            <img src="https://avatars.githubusercontent.com/u/100778954?v=4" width="100;" alt="Majin-PT"/>
             <br />
-            <sub><b>Sartoric</b></sub>
+            <sub><b>Majin-PT</b></sub>
         </a>
     </td></tr>
 </table>
